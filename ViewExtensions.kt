@@ -54,3 +54,30 @@ fun Button.enableButton() {
     isEnabled = true
     alpha = 1.0f
 }
+
+/**
+ * Returns display density as ...DPI
+ */
+fun AppCompatActivity.getDisplayDensity(): String {
+    val metrics = DisplayMetrics()
+    this.windowManager.defaultDisplay.getMetrics(metrics)
+    return when (metrics.densityDpi) {
+        DisplayMetrics.DENSITY_LOW -> "LDPI"
+        DisplayMetrics.DENSITY_MEDIUM -> "MDPI"
+        DisplayMetrics.DENSITY_HIGH -> "HDPI"
+        DisplayMetrics.DENSITY_XHIGH -> "XHDPI"
+        DisplayMetrics.DENSITY_XXHIGH -> "XXHDPI"
+        DisplayMetrics.DENSITY_XXXHIGH -> "XXXHDPI"
+        else -> "XXHDPI"
+    }
+}
+
+/**
+ * Add Color tint to drawable image
+ */
+fun Drawable.addTintWithCompat(colorInt: Int): Drawable {
+    var drawable = this
+    drawable = DrawableCompat.wrap(drawable)
+    DrawableCompat.setTint(drawable.mutate(), colorInt)
+    return drawable
+}
