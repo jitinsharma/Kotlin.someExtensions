@@ -76,3 +76,11 @@ fun Context.getScreenHeight(): Int {
     }
     return screenHeight
 }
+
+/**
+ * Convert dp integer to pixel
+ */
+private fun Context.dpToPx(dp : Int): Float {
+    val displayMetrics = this.resources.displayMetrics
+    return Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT)).toFloat()
+}

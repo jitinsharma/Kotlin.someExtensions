@@ -89,3 +89,13 @@ fun Bitmap.convertBitmapToBytes(): ByteArray {
     bytes = stream.toByteArray()
     return bytes
 }
+
+/**
+ * Convert Celsius temperature to Fahrenheit
+ */
+fun Double.celsiusToFahrenheit() : Double = (this * 1.8) + 32
+
+/**
+ * Convert Fahrenheit temperature to Celsius
+ */
+fun Double.fahrenheitToCelsius() : Double = (this - 32) * 5/9
