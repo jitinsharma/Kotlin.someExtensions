@@ -1,5 +1,8 @@
-package com.amadeus.mercimdp.utils
+package io.github.jitinsharma.kotlinsomeextensions
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import java.io.ByteArrayOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 

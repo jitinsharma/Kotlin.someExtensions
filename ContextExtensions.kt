@@ -1,17 +1,10 @@
-package com.amadeus.mercimdp.utils
+package io.github.jitinsharma.kotlinsomeextensions
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.drawable.ColorDrawable
 import android.net.ConnectivityManager
-import android.os.Build
-import android.support.annotation.ColorRes
-import android.support.v4.content.ContextCompat
-import android.support.v7.app.AppCompatActivity
 import android.util.DisplayMetrics
-import android.view.Window
 import android.view.WindowManager
-import timber.log.Timber
 import java.io.IOException
 import java.nio.charset.Charset
 
@@ -44,7 +37,6 @@ fun Context.loadFromAsset(jsonName: String): String? {
         inputStream.close()
         stream = String(buffer, Charset.forName("UTF-8"))
     } catch (e: IOException) {
-        Timber.e(e.toString())
     }
     return stream
 }
