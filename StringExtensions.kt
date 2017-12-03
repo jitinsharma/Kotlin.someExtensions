@@ -1,11 +1,6 @@
 package io.github.jitinsharma.kotlinsomeextensions
 
 /**
- * Wrapping try/catch to ignore catch block
- */
-inline fun <T> justTry(block: () -> T) = try { block() } catch (e: Throwable) {}
-
-/**
  * Converts string to integer safely otherwise returns zero
  */
 fun String.toIntOrZero() : Int {
