@@ -11,10 +11,6 @@ import kotlinx.coroutines.experimental.async
 import org.jetbrains.anko.coroutines.experimental.bg
 
 /**
- * Created by jsharma on 06/12/17.
- */
-
-/**
  * Executes block of code on Android's main thread. Can be called from background thread.
  */
 inline fun uiThreadExecutor(crossinline block: () -> Unit) {
