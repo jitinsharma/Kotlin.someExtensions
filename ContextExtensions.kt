@@ -2,7 +2,11 @@ package io.github.jitinsharma.kotlinsomeextensions
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
+import android.support.annotation.ColorRes
+import android.support.annotation.DrawableRes
+import android.support.v4.content.ContextCompat
 import android.util.DisplayMetrics
 import android.view.WindowManager
 import java.io.IOException
@@ -32,7 +36,7 @@ fun Context.loadFromAsset(jsonName: String): String? {
     try {
         val inputStream = this.assets.open(jsonName)
         val size = inputStream.available()
-        val buffer = ByteArray(size)
+        val buffer = kotlin.ByteArray(size)
         inputStream.read(buffer)
         inputStream.close()
         stream = String(buffer, Charset.forName("UTF-8"))
@@ -72,7 +76,19 @@ fun Context.getScreenHeight(): Int {
 /**
  * Convert dp integer to pixel
  */
-private fun Context.dpToPx(dp : Int): Float {
+fun Context.dpToPx(dp : Int): Float {
     val displayMetrics = this.resources.displayMetrics
     return Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT)).toFloat()
 }
+
+/**
+ * Get color from resources
+ */
+fun Context.getCompatColor(@ColorRes colorInt: Int) : Int =
+        ContextCompat.getColor(this, colorInt)
+
+/**
+ * Get drawable from resources
+ */
+fun Context.getCompatDrawable(@DrawableRes drawableRes: Int) : Drawable =
+        ContextCompat.getDrawable(this, drawableRes)
