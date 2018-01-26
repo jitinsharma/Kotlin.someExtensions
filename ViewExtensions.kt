@@ -39,18 +39,6 @@ fun TextView.setTextWithContentDescription(value : String?) {
 }
 
 /**
- * AppCompatActivity's toolbar visibility modifiers
- */
-
-fun AppCompatActivity.hideToolbar() {
-    supportActionBar?.hide()
-}
-
-fun AppCompatActivity.showToolbar() {
-    supportActionBar?.show()
-}
-
-/**
  * Button enabling/disabling modifiers
  */
 
@@ -62,23 +50,6 @@ fun Button.disableButton() {
 fun Button.enableButton() {
     isEnabled = true
     alpha = 1.0f
-}
-
-/**
- * Returns display density as ...DPI
- */
-fun AppCompatActivity.getDisplayDensity(): String {
-    val metrics = DisplayMetrics()
-    this.windowManager.defaultDisplay.getMetrics(metrics)
-    return when (metrics.densityDpi) {
-        DisplayMetrics.DENSITY_LOW -> "LDPI"
-        DisplayMetrics.DENSITY_MEDIUM -> "MDPI"
-        DisplayMetrics.DENSITY_HIGH -> "HDPI"
-        DisplayMetrics.DENSITY_XHIGH -> "XHDPI"
-        DisplayMetrics.DENSITY_XXHIGH -> "XXHDPI"
-        DisplayMetrics.DENSITY_XXXHIGH -> "XXXHDPI"
-        else -> "XXHDPI"
-    }
 }
 
 /**
@@ -100,12 +71,4 @@ fun Window.setStatusBarColor(@ColorRes color: Int) {
         this.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         this.statusBarColor = ContextCompat.getColor(this.context, color)
     }
-}
-
-/**
- * Sets color to toolbar in AppCompatActivity
- */
-fun AppCompatActivity.setToolbarColor(@ColorRes color: Int) {
-    this.supportActionBar?.setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this,
-            color)))
 }

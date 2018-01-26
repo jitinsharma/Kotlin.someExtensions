@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.net.ConnectivityManager
 import android.os.Build
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
 /**
  * Wrapping try/catch to ignore catch block
@@ -32,9 +34,8 @@ inline fun lollipopAndAbove(block : () -> Unit) {
  * Execute block of code if network is available
  */
 @SuppressLint("MissingPermission")
-fun Context.withConnection(block: () -> Unit) {
-    val connectivityManager = this
-            .getSystemService(Context.CONNECTIVITY_SERVICE) as? ConnectivityManager
+inline fun Context.withNetwork(block: () -> Unit) {
+    val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as? ConnectivityManager
     connectivityManager?.let {
         val netInfo = it.activeNetworkInfo
         netInfo?.let {

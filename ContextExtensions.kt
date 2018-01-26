@@ -36,7 +36,7 @@ fun Context.loadFromAsset(jsonName: String): String? {
     try {
         val inputStream = this.assets.open(jsonName)
         val size = inputStream.available()
-        val buffer = kotlin.ByteArray(size)
+        val buffer = ByteArray(size)
         inputStream.read(buffer)
         inputStream.close()
         stream = String(buffer, Charset.forName("UTF-8"))

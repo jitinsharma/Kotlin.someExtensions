@@ -3,9 +3,11 @@ Few extensions functions for Kotlin and Android
 
 Extensions.kt - General Extensions
 
-ViewExtensions.kt - Extensions on Android Views
+ViewExtensions.kt - Extensions for Android Views
 
-ContextExtensions.kt - Extensions on Android Context
+ContextExtensions.kt - Extensions for Android Context
+
+ActivityExtensions.kt - Extensions for Android Activities
 
 Blocks.kt - Higher order function blocks
 
