@@ -2,7 +2,7 @@ package io.github.jitinsharma.kotlinsomeextensions
 
 import android.graphics.drawable.ColorDrawable
 import android.support.annotation.ColorRes
-import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentTransaction
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.util.DisplayMetrics
@@ -51,9 +51,8 @@ fun AppCompatActivity.setToolbarColor(@ColorRes color: Int) {
 /**
  * Perform replace for a support fragment
  */
-fun AppCompatActivity.loadFragment(fragment: Fragment, containerId: Int) {
-    val transaction = this.supportFragmentManager.beginTransaction()
-    transaction
-            .replace(containerId, fragment)
-            .commit()
+inline fun AppCompatActivity.transact(action: FragmentTransaction.() -> Unit) {
+    supportFragmentManager.beginTransaction().apply {
+        action()
+    }.commit()
 }

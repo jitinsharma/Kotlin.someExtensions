@@ -1,11 +1,12 @@
 package io.github.jitinsharma.kotlinsomeextensions
 
-import android.annotation.SuppressLint
+import android.Manifest
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
 import android.support.annotation.ColorRes
 import android.support.annotation.DrawableRes
+import android.support.annotation.RequiresPermission
 import android.support.v4.content.ContextCompat
 import android.util.DisplayMetrics
 import android.view.WindowManager
@@ -15,7 +16,7 @@ import java.nio.charset.Charset
 /**
  * Checks network connectivity
  */
-@SuppressLint("MissingPermission")
+@RequiresPermission(Manifest.permission.ACCESS_NETWORK_STATE)
 fun Context.isNetworkStatusAvailable(): Boolean {
     val connectivityManager = this
             .getSystemService(Context.CONNECTIVITY_SERVICE) as? ConnectivityManager
@@ -26,6 +27,16 @@ fun Context.isNetworkStatusAvailable(): Boolean {
         }
     }
     return false
+}
+
+/**
+ * Execute block of code if network is available
+ */
+@RequiresPermission(Manifest.permission.ACCESS_NETWORK_STATE)
+inline fun Context.withNetwork(block: () -> Unit) {
+    if (isNetworkStatusAvailable()) {
+        block()
+    }
 }
 
 /**
