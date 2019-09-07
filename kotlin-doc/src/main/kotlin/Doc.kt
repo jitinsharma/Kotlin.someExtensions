@@ -40,8 +40,9 @@ fun main() {
         }
         if (functionDocTexts.isNotEmpty()) {
             val doc = "\n# ${file.name} \n ```kotlin \n ${functionDocTexts.trimEnd()} \n ```"
-            val readMePath = currentPath.replace("kotlin-doc", "README.md")
-            Files.write(Paths.get(readMePath), doc.toByteArray(), StandardOpenOption.APPEND)
+            println(file.name.replace(".kt", ""))
+            val readMePath = currentPath.replace("kotlin-doc", "doc/${file.name.replace(".kt", "")}.md")
+            Files.write(Paths.get(readMePath), doc.toByteArray(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)
         }
     }
 }
