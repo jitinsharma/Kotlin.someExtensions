@@ -14,9 +14,7 @@ fun ByteArray.convertBytesToBitmap(): Bitmap =
  * Convert bitmap to a byte array
  */
 fun Bitmap.convertBitmapToBytes(): ByteArray {
-    val bytes: ByteArray
     val stream = ByteArrayOutputStream()
     this.compress(Bitmap.CompressFormat.PNG, 0, stream)
-    bytes = stream.toByteArray()
-    return bytes
+    return stream.toByteArray()
 }

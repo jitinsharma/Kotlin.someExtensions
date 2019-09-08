@@ -17,7 +17,6 @@ private val project by lazy {
             CompilerConfiguration(),
             EnvironmentConfigFiles.JVM_CONFIG_FILES
     ).project
-
 }
 
 fun main() {
@@ -26,7 +25,7 @@ fun main() {
     val files = findFiles(File(filesPath), ".kt")
     files.forEach { file ->
         val codeString = file.asString()
-        val ktFile = codeString.toKtFile()
+        val ktFile = createKtFile(codeString, file.name)
         val functions = ktFile.getFunctionList()
         var functionDocTexts = ""
         functions.forEach { ktFunction ->
@@ -40,13 +39,15 @@ fun main() {
         }
         if (functionDocTexts.isNotEmpty()) {
             val doc = "\n# ${file.name} \n ```kotlin \n ${functionDocTexts.trimEnd()} \n ```"
-            println(file.name.replace(".kt", ""))
             val readMePath = currentPath.replace("kotlin-doc", "doc/${file.name.replace(".kt", "")}.md")
             Files.write(Paths.get(readMePath), doc.toByteArray(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)
         }
     }
 }
 
-fun String.toKtFile() =
-        PsiManager.getInstance(project).findFile(LightVirtualFile("a.kt", KotlinFileType.INSTANCE, this)) as KtFile
+fun createKtFile(codeString: String, fileName: String) =
+        PsiManager.getInstance(project)
+            .findFile(
+                LightVirtualFile(fileName, KotlinFileType.INSTANCE, codeString)
+            ) as KtFile
 
