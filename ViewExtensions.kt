@@ -57,3 +57,12 @@ fun Window.addStatusBarColor(@ColorRes color: Int) {
         this.statusBarColor = ContextCompat.getColor(this.context, color)
     }
 }
+
+/**
+ * Make ImageView image GrayScale
+ */
+fun ImageView.makeGrayscale() {
+    val matrix = ColorMatrix()
+    matrix.setSaturation(0f)
+    colorFilter = ColorMatrixColorFilter(matrix)
+}
