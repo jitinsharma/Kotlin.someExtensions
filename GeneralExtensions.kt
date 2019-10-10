@@ -24,3 +24,8 @@ inline fun lollipopAndAbove(block : () -> Unit) {
         block()
     }
 }
+
+/**
+ * XNOR operator using XOR operator 
+ */
+infix fun Boolean.xnor(other: Boolean): Boolean = !(this.xor(other))
