@@ -16,6 +16,7 @@ import java.nio.file.Paths
 import java.nio.file.StandardOpenOption
 
 fun generateDocs() {
+    println("Generating docs")
     val files = getProjectKtFiles()
     files.forEach { file ->
         val codeString = file.asString()

@@ -13,6 +13,7 @@ fun main() {
 }
 
 fun copyFiles() {
+    println("Copying files")
     getProjectKtFiles().forEach { file ->
         Files.copy(
             file.toPath(),

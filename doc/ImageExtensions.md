@@ -15,4 +15,13 @@ fun Bitmap.convertBitmapToBytes(): ByteArray {
     this.compress(Bitmap.CompressFormat.PNG, 0, stream)
     return stream.toByteArray()
 } 
+ 
+, /**
+ * Make ImageView image GrayScale
+ */
+fun ImageView.makeGrayscale() {
+    val matrix = ColorMatrix()
+    matrix.setSaturation(0f)
+    colorFilter = ColorMatrixColorFilter(matrix)
+} 
  ```

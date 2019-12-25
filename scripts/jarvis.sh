@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
 
-echo "Building Jarvis Jar"
-./gradlew :jarvis:clean
-./gradlew :jarvis:jar
+echo "---------------------------------------------------------------------------------------------"
+echo "                                   Building Jarvis Jar"
+echo "---------------------------------------------------------------------------------------------"
+./gradlew :jarvis:clean jar
 
-echo "Running Jarvis"
+echo "---------------------------------------------------------------------------------------------"
+echo "                                      Running Jarvis"
+echo "---------------------------------------------------------------------------------------------"
 java -jar jarvis/build/libs/jarvis-1.0-SNAPSHOT.jar
+
+echo "Done"
