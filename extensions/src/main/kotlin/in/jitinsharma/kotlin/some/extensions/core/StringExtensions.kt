@@ -1,7 +1,8 @@
+package `in`.jitinsharma.kotlin.some.extensions.core
 
-# StringExtensions.kt 
- ```kotlin 
- /**
+import java.util.*
+
+/**
  * Converts string to integer safely otherwise returns zero
  */
 fun String.toIntOrZero(): Int {
@@ -11,9 +12,9 @@ fun String.toIntOrZero(): Int {
     } catch (_: Exception) {
     }
     return value
-} 
- 
-, /**
+}
+
+/**
  * Converts a string to boolean such as 'Y', 'yes', 'TRUE'
  */
 
@@ -22,9 +23,9 @@ fun String.toBoolean(): Boolean {
             (this.equals("TRUE", ignoreCase = true)
                     || this.equals("Y", ignoreCase = true)
                     || this.equals("YES", ignoreCase = true))
-} 
- 
-, /**
+}
+
+/**
  * Converts string to camel case. Handles multiple strings and empty strings
  */
 fun String.convertToCamelCase(): String {
@@ -41,5 +42,4 @@ fun String.convertToCamelCase(): String {
             .forEach { text += "$it " }
     }
     return text.trim { it <= ' ' }
-} 
- ```
+}

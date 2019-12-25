@@ -1,15 +1,25 @@
+package `in`.jitinsharma.kotlin.some.extensions.activity
 
-# ActivityExtensions.kt 
- ```kotlin 
- /**
+import android.graphics.drawable.ColorDrawable
+import android.util.DisplayMetrics
+import androidx.annotation.ColorRes
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentTransaction
+
+/**
  * AppCompatActivity's toolbar visibility modifiers
  */
 
 fun AppCompatActivity.hideToolbar() {
     supportActionBar?.hide()
-} 
- 
-, , /**
+}
+
+fun AppCompatActivity.showToolbar() {
+    supportActionBar?.show()
+}
+
+/**
  * Returns display density as ...DPI
  */
 fun AppCompatActivity.getDisplayDensity(): String {
@@ -24,9 +34,9 @@ fun AppCompatActivity.getDisplayDensity(): String {
         DisplayMetrics.DENSITY_XXXHIGH -> "XXXHDPI"
         else -> "XXHDPI"
     }
-} 
- 
-, /**
+}
+
+/**
  * Sets color to toolbar in AppCompatActivity
  */
 fun AppCompatActivity.setToolbarColor(@ColorRes color: Int) {
@@ -35,14 +45,13 @@ fun AppCompatActivity.setToolbarColor(@ColorRes color: Int) {
             ContextCompat.getColor(this, color)
         )
     )
-} 
- 
-, /**
+}
+
+/**
  * Perform replace for a support fragment
  */
 inline fun AppCompatActivity.transact(action: FragmentTransaction.() -> Unit) {
     supportFragmentManager.beginTransaction().apply {
         action()
     }.commit()
-} 
- ```
+}

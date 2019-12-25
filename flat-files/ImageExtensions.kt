@@ -1,18 +1,20 @@
+package `in`.jitinsharma.kotlin.some.extensions.image
 
-# ImageExtensions.kt 
- ```kotlin 
- /**
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import java.io.ByteArrayOutputStream
+
+/**
  * Convert byte array to bitmap
  */
 fun ByteArray.convertBytesToBitmap(): Bitmap =
-    BitmapFactory.decodeByteArray(this, 0, size) 
- 
-, /**
+    BitmapFactory.decodeByteArray(this, 0, size)
+
+/**
  * Convert bitmap to a byte array
  */
 fun Bitmap.convertBitmapToBytes(): ByteArray {
     val stream = ByteArrayOutputStream()
     this.compress(Bitmap.CompressFormat.PNG, 0, stream)
     return stream.toByteArray()
-} 
- ```
+}
